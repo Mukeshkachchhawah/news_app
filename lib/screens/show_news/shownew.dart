@@ -79,10 +79,12 @@ class _ShowNewsState extends State<ShowNews> {
                         borderRadius: BorderRadius.circular(5)),
                   ),
                   hSpacer(),
-               
                   Text(
                     desc == null ? "desc" : desc.toString(),
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, ),
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                   hSpacer(mheight: 20.0),
                   Text(
@@ -101,7 +103,8 @@ class _ShowNewsState extends State<ShowNews> {
                       },
                       child: Text(
                         newsUrl == null ? "Not Url" : newsUrl.toString(),
-                        style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: Colors.red, fontWeight: FontWeight.bold),
                       )),
                   hSpacer(),
                   Text("Published at : ${publishedAt.toString()}")
@@ -157,7 +160,10 @@ class _ShowNewsState extends State<ShowNews> {
             ],
           ),
         ),
-        Text("Show News", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),),
+        Text(
+          "Show News",
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+        ),
         Container(
           height: 50,
           width: 50,
@@ -168,25 +174,27 @@ class _ShowNewsState extends State<ShowNews> {
               CustomIcon(
                 icons: Icon(Icons.download_for_offline),
                 ontap: () {
-              int id = generateId();
-              String temp1 =
-                  name == null ? "Unknown Publisher • " : "${name} • ";
-              String temp2 = author == null ? "Unknown Author" : "${author}";
-              String details = "$temp1$temp2";
-              String mImg = img.toString();
+                  int id = generateId();
+                  String temp1 =
+                      name == null ? "Unknown Publisher • " : "${name} • ";
+                  String temp2 =
+                      author == null ? "Unknown Author" : "${author}";
+                  String details = "$temp1$temp2";
+                  String mImg = img.toString();
 
-              context.read<SavedBlocBloc>().add(AddNewsEvent(
-                  id: id.toString(),
-                  details: details,
-                  title: title == null ? "No Title" : title.toString(),
-                  description:
-                      desc == null ? "No Description" : desc.toString(),
-                  content: content == null ? "No Content" : content.toString(),
-                  imgUrl: mImg=="null"
-                      ? "https://cdn.pixabay.com/photo/2017/11/10/04/47/image-2935360_1280.png"
-                      : mImg.toString(),
-                  newsUrl: newsUrl.toString(),
-                  pub: "Published at : ${publishedAt.toString()}"));
+                  context.read<SavedBlocBloc>().add(AddNewsEvent(
+                      id: id.toString(),
+                      details: details,
+                      title: title == null ? "No Title" : title.toString(),
+                      description:
+                          desc == null ? "No Description" : desc.toString(),
+                      content:
+                          content == null ? "No Content" : content.toString(),
+                      imgUrl: mImg == "null"
+                          ? "https://cdn.pixabay.com/photo/2017/11/10/04/47/image-2935360_1280.png"
+                          : mImg.toString(),
+                      newsUrl: newsUrl.toString(),
+                      pub: "Published at : ${publishedAt.toString()}"));
                 },
               ),
             ],
@@ -195,17 +203,17 @@ class _ShowNewsState extends State<ShowNews> {
       ],
     );
   }
-  int generateId(){
-  int timeStamp = DateTime.now().millisecondsSinceEpoch;
-  return timeStamp;
-}
+
+  int generateId() {
+    int timeStamp = DateTime.now().millisecondsSinceEpoch;
+    return timeStamp;
+  }
 
   Widget HedingTitle() {
     return Column(
       children: [
-          Text("${name == null ? "Cnn" : "${name}"}"),
-            wSpacer(),
-        
+        Text("${name == null ? "Cnn" : "${name}"}"),
+        wSpacer(),
       ],
     );
   }
