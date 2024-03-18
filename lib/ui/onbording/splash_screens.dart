@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_application/screens/bottom_bar_page/bottombar.dart';
+import 'package:news_application/ui/bottom_bar_page/bottombar.dart';
 
 class SplashScreens extends StatefulWidget {
   const SplashScreens({super.key});
@@ -12,35 +12,39 @@ class _SplashScreensState extends State<SplashScreens> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-              image: NetworkImage(
-                  "https://www.dreshare.com/wp-content/uploads/2023/04/Shubhankar-Mishra.jpg"),
-              fit: BoxFit.cover),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.only(top: 650, left: 10, right: 10),
-          child: SingleChildScrollView(
+      body: Stack(
+        children: [
+          Container(
+            height: double.infinity,
+            width: double.infinity,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: NetworkImage(
+                      "https://www.dreshare.com/wp-content/uploads/2023/04/Shubhankar-Mishra.jpg"),
+                  fit: BoxFit.cover),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "Stay Informed\nfrom Day One",
                   style: TextStyle(
                       fontSize: 40,
                       fontWeight: FontWeight.bold,
                       color: Colors.white),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
-                Text(
-                  "Discover the Latest News with our\nSeamless Onbording Experience6",
+                const Text(
+                  "Discover the Latest News with our\nSeamless Onboarding Experience6",
                   style: TextStyle(fontSize: 16, color: Colors.white70),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 InkWell(
@@ -48,7 +52,7 @@ class _SplashScreensState extends State<SplashScreens> {
                     Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => BottomBarPage(),
+                          builder: (context) => const BottomBarPage(),
                         ));
                   },
                   child: Container(
@@ -56,8 +60,8 @@ class _SplashScreensState extends State<SplashScreens> {
                     width: double.infinity,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
-                        color: Color(0xff0006E9)),
-                    child: Center(
+                        color: const Color(0xff0006E9)),
+                    child: const Center(
                       child: Text(
                         "Getting Started",
                         style: TextStyle(color: Colors.white),
@@ -68,7 +72,7 @@ class _SplashScreensState extends State<SplashScreens> {
               ],
             ),
           ),
-        ),
+        ],
       ),
     );
   }

@@ -10,7 +10,7 @@ class SavedBlocBloc extends Bloc<SavedBlocEvent, SavedBlocState> {
   SavedNewsDB savedNewsDB;
   SavedBlocBloc({required this.savedNewsDB}) : super(SavedBlocInitialState()) {
     on<AddNewsEvent>((event, emit) async {
-      emit(SavedBlocLodingState());
+      emit(SavedBlocLadingState());
       var response = savedNewsDB.addNews(
           id: event.id,
           details: event.details,
@@ -22,30 +22,30 @@ class SavedBlocBloc extends Bloc<SavedBlocEvent, SavedBlocState> {
           pub: event.pub);
       if (response == true) {
         var newsData = await savedNewsDB.fetchSavedNews();
-        emit(SavedBlocLodadeState(arrData: newsData));
+        emit(SavedBlocLoadedState(arrData: newsData));
       } else {
         emit(SavedBlocErrorState(notSaved: "Not Found Data"));
       }
     });
 
     on<GetNewsEvent>((event, emit) async {
-      emit(SavedBlocLodingState());
+      emit(SavedBlocLadingState());
 
       var newsData = await savedNewsDB.fetchSavedNews();
 
       if (newsData.isNotEmpty) {
-        emit(SavedBlocLodadeState(arrData: newsData));
+        emit(SavedBlocLoadedState(arrData: newsData));
       } else {
         emit(SavedBlocErrorState(notSaved: "No Saved News"));
       }
     });
 
     on<DeleteNewsEvent>((event, emit) async {
-      emit(SavedBlocLodingState());
+      emit(SavedBlocLadingState());
       var newsData = await savedNewsDB.deleteNews(event.id);
       if (newsData == true) {
         var removData = await savedNewsDB.fetchSavedNews();
-        emit(SavedBlocLodadeState(arrData: removData));
+        emit(SavedBlocLoadedState(arrData: removData));
       } else {
         emit(SavedBlocErrorState(notSaved: "Not Found Data"));
       }

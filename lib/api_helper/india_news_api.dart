@@ -1,8 +1,9 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import '../datamodal/ind_news_modal/jsonmodal.dart';
 
 class IndiaNewApi {
   Future<dynamic> getApi({required String CAT}) async {

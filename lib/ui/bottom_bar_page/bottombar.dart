@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:news_application/screens/pages/home.dart';
-import 'package:news_application/screens/pages/saved.dart';
+import 'package:news_application/ui/pages/home.dart';
+import 'package:news_application/ui/pages/saved.dart';
 
 import '../channels/news_channel.dart';
 
@@ -14,12 +14,10 @@ class BottomBarPage extends StatefulWidget {
 class _BottomBarPageState extends State<BottomBarPage> {
   int selectIndex = 0;
 
-  List<Widget> _pageList = [
-    HomePage(),
-    // Discover(),
-    NewsChannel(),
-    Saved(),
-
+  final List<Widget> _pageList = [
+    const HomePage(),
+    const NewsChannel(),
+    const Saved(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -27,19 +25,18 @@ class _BottomBarPageState extends State<BottomBarPage> {
       body: _pageList[selectIndex],
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: selectIndex,
-          onTap: OnTapped,
-          items: [
+          onTap: onTapped,
+          items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
             BottomNavigationBarItem(
                 icon: Icon(Icons.live_tv_rounded), label: "Channel"),
             BottomNavigationBarItem(
                 icon: Icon(Icons.save_outlined), label: "Saved"),
-            //  BottomNavigationBarItem(icon: Icon(Icons.home), label: "Profile")
           ]),
     );
   }
 
-  void OnTapped(int index) {
+  void onTapped(int index) {
     setState(() {
       selectIndex = index;
     });

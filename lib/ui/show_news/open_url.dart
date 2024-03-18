@@ -4,7 +4,7 @@ import 'package:webview_flutter/webview_flutter.dart';
   String? linkUrl;
 class OpenUrl extends StatefulWidget {
 
-   OpenUrl({required String curl}){
+   OpenUrl({super.key, required String curl}){
      linkUrl = curl;
    }
   
@@ -22,6 +22,8 @@ class _OpenUrlState extends State<OpenUrl> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      ///TODO new web view 
+
       body: WebViewWidget(controller: getWebViewController()),
     );
   }

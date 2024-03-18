@@ -1,14 +1,15 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 
 class CustomIcon extends StatelessWidget{
   Icon icons;
-  VoidCallback ontap;
-  CustomIcon({required this.icons, required this.ontap});
+  VoidCallback onTap;
+  CustomIcon({super.key, required this.icons, required this.onTap});
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return InkWell(
-      onTap: ontap,
+      onTap: onTap,
       child: Container(
           height: 40,
           width: 40,

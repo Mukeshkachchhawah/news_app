@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_application/screens/pages/home.dart';
-import 'package:news_application/ui_helper.dart';
+import 'package:news_application/ui/pages/home.dart';
 
 import '../../view_news.dart';
 import 'channels.dart';
@@ -16,7 +15,6 @@ class _NewsChannelState extends State<NewsChannel> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
@@ -26,11 +24,11 @@ class _NewsChannelState extends State<NewsChannel> {
       appBar: AppBar(
         leading: InkWell(
           onTap: (){
-           Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(),));
+           Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage(),));
           },
-          child: Icon(Icons.arrow_back, color: Colors.black,)),
+          child: const Icon(Icons.arrow_back, color: Colors.black,)),
         backgroundColor: Colors.white,elevation: 0,
-        title: Text("News Channels", style: TextStyle(color: Colors.black),),
+        title: const Text("News Channels", style: TextStyle(color: Colors.black),),
       ),
         body: channelCard());
   }
@@ -64,7 +62,7 @@ class _NewsChannelState extends State<NewsChannel> {
                     title: Text(
                       "${NewsChannelImage.newsChannelsList[index]['name']}",
                       style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),

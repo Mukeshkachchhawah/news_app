@@ -1,5 +1,5 @@
-class CategoriList {
- List<Map<String, String>> categori = [
+class CategoryList {
+ List<Map<String, String>> category = [
     {"name": "Business", "img": "asstes/image/business.png"},
      {"name": "entertainment", "img": "asstes/image/entertainment.png"},
       {"name": "general", "img": "asstes/image/general.png"},
